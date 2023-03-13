@@ -1,7 +1,15 @@
+using Microsoft.EntityFrameworkCore;
+using MVC_Producr.Data;
+using Microsoft.AspNetCore.Identity;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+builder.Services.AddDbContext<ApplicationDbContext>(options => options.UseNpgsql
+                                                    (builder.Configuration.
+                                                    GetConnectionString("DefaultConnection")));
+
 
 var app = builder.Build();
 
@@ -17,6 +25,7 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.UseRouting();
+app.UseAuthentication();
 
 app.UseAuthorization();
 
