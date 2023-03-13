@@ -24,12 +24,6 @@ namespace MVC_Producr.Controllers
         }
 
 
-        [HttpGet]
-        public IActionResult Register()
-        {
-            return View();
-        }
-
         [HttpPost]
         public async Task<IActionResult> Register(UserViewModel model)
         {
