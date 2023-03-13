@@ -1,0 +1,16 @@
+﻿@model MVC_Producr.Models.UserViewModel
+@{
+}
+
+<form method="post" action="Register">
+    <div class="form-group">
+        <label for="" class="form-label">UserName</label>
+        <input type="text" class="form-control" asp-for="UserName">
+    </div>
+    <div class="form-group">
+        <label for="" class="form-label">Password</label>
+        <input type="password" class="form-control" asp-for="Password">
+    </div>
+    <h1></h1>
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
