@@ -20,6 +20,10 @@ namespace MVC_Producr.Controllers
         {
             return View();
         }
+        public IActionResult Post()
+        {
+            return View();
+        }
 
         [HttpPost]
         public async Task<IActionResult> CreateProduct(ProductViewModel product)
