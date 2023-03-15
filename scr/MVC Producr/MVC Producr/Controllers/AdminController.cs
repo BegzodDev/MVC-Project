@@ -24,9 +24,13 @@ namespace MVC_Producr.Controllers
         {
             return View();
         }
+        public IActionResult GetAction()
+        {
+            return View();
+        }
 
         [HttpPost]
-        public async Task<IActionResult> CreateProduct(ProductViewModel product)
+        public async Task<IActionResult> Add_Product(ProductViewModel product)
         {
 
             var _product = new Product()
@@ -38,12 +42,12 @@ namespace MVC_Producr.Controllers
 
             await _context.Products.AddAsync(_product);
             await _context.SaveChangesAsync();
-            return View(product);
+            return RedirectToAction("Index","Home");
         }
 
 
         [HttpGet]
-        public async Task<IActionResult> Get()
+        public async Task<IActionResult> Get_Product()
         {
             var products = await _context.Products.ToListAsync();
             return View(products);
@@ -51,7 +55,7 @@ namespace MVC_Producr.Controllers
 
 
         [HttpDelete]
-        public async Task<IActionResult> Delete(string ProductName)
+        public async Task<IActionResult> Delete_Product(string ProductName)
         {
             var product = await _context.Products.FirstOrDefaultAsync(x => x.ItemName == ProductName);
 
@@ -63,7 +67,7 @@ namespace MVC_Producr.Controllers
 
 
         [HttpPut]
-        public async Task<IActionResult> Update(string product,ProductViewModel productChanges)
+        public async Task<IActionResult> Update_Product(string product,ProductViewModel productChanges)
         {
             var productData = await _context.Products.FirstOrDefaultAsync(x=>x.ItemName == product);
 
