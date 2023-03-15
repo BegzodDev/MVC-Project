@@ -4,4 +4,10 @@
 @{
 }
 <button type="submit" onclick="location.href='@Url.Action("Post","Admin")'"  class="btn btn-primary btn-lg btn-block">AddProduct</button>
-<button type="button" onclick="location.href='@Url.Action("Index","Home")'"  class="btn  btn-danger btn-lg btn-block">Delete Product</button>
+<button type="button" onclick="location.href='@Url.Action("Get","Admin")'" class="btn  btn-info btn-lg btn-block">Get Products</button>
+<button type="button" onclick="location.href='@Url.Action("Index","Admin")'" class="btn  btn-success btn-lg btn-block">Update Product</button>
+<button type="button" onclick="location.href='@Url.Action("Delete","Admin")'" class="btn  btn-danger btn-lg btn-block">Delete Product</button>
+<p></p>
+<h1  class="navbar-nav justify-content-end">
+<button type="button" onclick="location.href='@Url.Action("Index","Home")'" class="btn  btn-secondary btn-lg btn-block">Go Home Page</button>
+</h1>

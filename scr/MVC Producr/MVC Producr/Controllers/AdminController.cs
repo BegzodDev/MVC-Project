@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using MVC_Producr.Data;
 using MVC_Producr.Models;
 using MVC_Producr.Models.Domain.Entities;
+using MVC_Producr.Models.ViewModels;
 
 namespace MVC_Producr.Controllers
 {
@@ -25,6 +26,10 @@ namespace MVC_Producr.Controllers
             return View();
         }
         public IActionResult GetAction()
+        {
+            return View();
+        }
+        public IActionResult Delete()
         {
             return View();
         }
@@ -54,14 +59,17 @@ namespace MVC_Producr.Controllers
         }
 
 
-        [HttpDelete]
-        public async Task<IActionResult> Delete_Product(string ProductName)
+        [HttpPost,ActionName("Delete")]
+        public async Task<IActionResult> Delete_Product(DeleteViewModel ProductName)
         {
-            var product = await _context.Products.FirstOrDefaultAsync(x => x.ItemName == ProductName);
+            var product = await _context.Products.FirstOrDefaultAsync(x => x.Id == ProductName.Id);
+            if (product == null)
+            {
+                return RedirectToAction("Index","Home");
+            }
 
             _context.Products.Remove(product);
             await _context.SaveChangesAsync();
-
             return View(product);
         }
 
