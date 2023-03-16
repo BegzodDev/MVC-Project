@@ -1,7 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using MVC_Producr.Data;
-using MVC_Producr.Models;
 using MVC_Producr.Models.Domain.Entities;
 using MVC_Producr.Models.ViewModels;
 
@@ -25,11 +24,17 @@ namespace MVC_Producr.Controllers
         {
             return View();
         }
-        public IActionResult GetAction()
+        public async Task<IActionResult> Get()
+        {
+            var products = await _context.Products.ToListAsync();
+            return View(products);
+        }
+        public IActionResult Delete()
         {
             return View();
         }
-        public IActionResult Delete()
+
+        public IActionResult Update()
         {
             return View();
         }
@@ -47,15 +52,7 @@ namespace MVC_Producr.Controllers
 
             await _context.Products.AddAsync(_product);
             await _context.SaveChangesAsync();
-            return RedirectToAction("Index","Home");
-        }
-
-
-        [HttpGet]
-        public async Task<IActionResult> Get_Product()
-        {
-            var products = await _context.Products.ToListAsync();
-            return View(products);
+            return RedirectToAction("Index","Admin");
         }
 
 
@@ -70,21 +67,23 @@ namespace MVC_Producr.Controllers
 
             _context.Products.Remove(product);
             await _context.SaveChangesAsync();
-            return View(product);
+            return RedirectToAction("Index", "Admin");
+
         }
 
 
-        [HttpPut]
-        public async Task<IActionResult> Update_Product(string product,ProductViewModel productChanges)
+        [HttpPost,ActionName("Update")]
+        public async Task<IActionResult> Update_Product(UpdateViewModel model)
         {
-            var productData = await _context.Products.FirstOrDefaultAsync(x=>x.ItemName == product);
+            var productData = await _context.Products.FirstOrDefaultAsync(x=>x.Id == model.Id);
 
-            productData.ItemName = productChanges.ItemName;
-            productData.Quantity = productChanges.Quantity;
-            productData.Price = productChanges.Price;
+            productData.ItemName = model.ItemName;
+            productData.Quantity = model.Quantity;
+            productData.Price = model.Price;
 
             await _context.SaveChangesAsync();
-            return View(productData);
+            return RedirectToAction("Index", "Admin");
+
         }
 
     }

@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using MVC_Producr.Data;
-using MVC_Producr.Models;
 using MVC_Producr.Models.Domain.Entities;
+using MVC_Producr.Models.ViewModels;
 
 namespace MVC_Producr.Controllers
 {

@@ -1,4 +1,4 @@
-﻿namespace MVC_Producr.Models
+﻿namespace MVC_Producr.Models.ViewModels
 {
     public class UserViewModel
     {
