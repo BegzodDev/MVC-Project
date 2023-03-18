@@ -1,13 +1,13 @@
 ﻿@model List<MVC_Producr.Models.Domain.Entities.Product>
 @{
 }
-
+    
 <h1>Products</h1>
 
 <table class="Table">
-    <thead>
+    <thead class="alert-dark">
         <tr>
-            <th>Id</th>
+            <th >Id</th>
             <th>ItemName</th>
             <th>Quantity</th>
             <th>Price</th>
@@ -17,6 +17,7 @@
         @foreach (var product in Model)
         {
             <tr>
+                
                 <td>@product.Id</td>
                 <td>@product.ItemName</td>
                 <td>@product.Quantity</td>
@@ -26,3 +27,8 @@
         }
     </tbody>
 </table>
+<button type="button"
+        onclick="location.href='@Url.Action("Index","Admin")'"
+        class="btn btn-info">
+    Back
+</button>

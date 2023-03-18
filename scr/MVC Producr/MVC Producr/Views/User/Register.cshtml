@@ -1,10 +1,10 @@
-﻿@model MVC_Producr.Models.UserViewModel
+﻿@model MVC_Producr.Models.ViewModels.UserViewModel
 @{
 }
 
 <form method="post" action="Register">
-    
-        
+
+
     </button>
     <div class="form-group">
         <label for="" class="form-label">UserName</label>
@@ -15,10 +15,11 @@
         <input type="password" class="form-control" asp-for="Password">
     </div>
     <h1></h1>
-    <button type="submit" class="btn btn-primary">Submit</button>
-    <button type="button" class="btn btn-primary">
-        <li class="nav-item">
-            <a class="text-dark" asp-area="" asp-controller="User" asp-action="Index">Products</a>
-        </li>
-    </button>
+    <button type="submit" class="btn btn-success">Submit</button>
+    
 </form>
+@*<button type="button" class="btn btn-primary">
+    <li class="nav-item">
+        <a class="text-dark" asp-area="" asp-controller="User" asp-action="Products">Products</a>
+    </li>
+</button>*@
