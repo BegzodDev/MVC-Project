@@ -13,10 +13,10 @@ namespace MVC_Producr.Controllers
         {
             _context = context;   
         }
-        /*public IActionResult Index()
+        public IActionResult Index()
         {
             return View();
-        }*/
+        }
 
         [HttpGet]
         public IActionResult Register()
