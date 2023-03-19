@@ -1,4 +1,6 @@
-﻿namespace MVC_Producr.Models.Domain.Entities
+﻿using Microsoft.Build.Framework;
+
+namespace MVC_Producr.Models.Domain.Entities
 {
     public class User
     {
