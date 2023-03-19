@@ -6,11 +6,11 @@
 <form method="post" action="Delete">
     <div class="form-group">
         <label for="Id">Id</label>
-        <input type="number" class="form-control" asp-for="Id">
+        <input type="number" class="form-control" asp-for="Id" >
     </div>    <h1></h1>
     <button type="submit" class="btn btn-danger">Delete</button>
     <button type="button"
-            onclick="location.href='@Url.Action("Index","Admin")'"
+            onclick="location.href='@Url.Action("Get_Products","Admin")'"
             class="btn btn-info">
         Back
     </button>

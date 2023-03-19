@@ -41,7 +41,7 @@ namespace MVC_Producr.Controllers
             }
             await _context.Users.AddAsync(user);
             await _context.SaveChangesAsync();
-            return RedirectToAction("Index","Home");
+            return RedirectToAction("Get_Products","Admin");
         }
     }
 }

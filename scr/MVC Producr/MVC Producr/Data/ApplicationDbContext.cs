@@ -13,7 +13,6 @@ namespace MVC_Producr.Data
         public DbSet<Admin> Admins { get; set; }
         public DbSet<User> Users { get; set; } 
         public DbSet<Product> Products { get; set; }
-
         public DbSet<ProductHistory> ProductHistorys { get; set; }
         public DbSet<TotalPriceWithVAT> TotalPriceWithVATs { get; set; }
 
@@ -50,10 +49,6 @@ namespace MVC_Producr.Data
                     Password = "12345"
                 });
         }
-
-
-        public DbSet<MVC_Producr.Models.ViewModels.ProductViewModel>? ProductViewModel { get; set; }
-        
     }
 
 }
