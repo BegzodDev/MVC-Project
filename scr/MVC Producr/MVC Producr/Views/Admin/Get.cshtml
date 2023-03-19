@@ -1,34 +1,31 @@
-﻿@model List<MVC_Producr.Models.Domain.Entities.Product>
+﻿@model List<MVC_Producr.Models.ViewModels.ProductViewModel>
+
+
 @{
 }
-    
+
+<form method="get" action="Get_products">
 <h1>Products</h1>
 
-<table class="Table">
-    <thead class="alert-dark">
+<table class="table">
+    <thead>
         <tr>
-            <th >Id</th>
-            <th>ItemName</th>
+            <th>Id</th>
+            <th>ProductName</th>
             <th>Quantity</th>
             <th>Price</th>
         </tr>
     </thead>
     <tbody>
-        @foreach (var product in Model)
+        @foreach (var item in Model)
         {
             <tr>
-                
-                <td>@product.Id</td>
-                <td>@product.ItemName</td>
-                <td>@product.Quantity</td>
-                <td>@product.Price</td>
-
+                <td>@item.Id</td>
+                <td>@item.ItemName</td>
+                <td>@item.Quantity</td>
+                <td>@item.Price</td>
             </tr>
         }
     </tbody>
 </table>
-<button type="button"
-        onclick="location.href='@Url.Action("Index","Admin")'"
-        class="btn btn-info">
-    Back
-</button>
+</form>
