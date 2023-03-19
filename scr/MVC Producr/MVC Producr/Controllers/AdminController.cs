@@ -26,11 +26,7 @@ namespace MVC_Producr.Controllers
         {
             return View();
         }
-        public async Task<IActionResult> Get()
-        {
-            var products = await _context.Products.ToListAsync();
-            return View(products);
-        }
+        
         public IActionResult Delete()
         {
             return View();
@@ -123,6 +119,15 @@ namespace MVC_Producr.Controllers
         {
             var product = await _context.Products.ToListAsync();
             return View(product);
+        }
+
+
+        [HttpGet]
+        public async Task<IActionResult> Get_History()
+        {
+
+
+            return View();
         }
     }
 }
