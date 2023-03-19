@@ -72,7 +72,7 @@ namespace MVC_Producr.Controllers
             await _context.TotalPriceWithVATs.AddAsync(totalPrice);
             await _context.Products.AddAsync(_product);
             await _context.SaveChangesAsync();
-            return RedirectToAction("Get_products","Admin");
+            return RedirectToAction("Get_Products","Admin");
         }
 
 
@@ -93,7 +93,7 @@ namespace MVC_Producr.Controllers
             await _context.ProductHistorys.AddAsync(history);
             _context.Products.Remove(product);
             await _context.SaveChangesAsync();
-            return RedirectToAction("Index", "Admin");
+            return RedirectToAction("Get_Products", "Admin");
 
         }
 
@@ -114,17 +114,15 @@ namespace MVC_Producr.Controllers
             };
             await _context.ProductHistorys.AddAsync(history);
             await _context.SaveChangesAsync();
-            return RedirectToAction("Index", "Admin");
+            return RedirectToAction("Get_Products", "Admin");
 
         }
 
-        [HttpGet,ActionName("Get")]
-        public async Task<IActionResult> Get_products(ApplicationDbContext _context)
+        [HttpGet]
+        public async Task<IActionResult> Get_Products()
         {
-
-            var products = await _context.Products.ToListAsync();
-
-            return View(products);
+            var product = await _context.Products.ToListAsync();
+            return View(product);
         }
     }
 }
