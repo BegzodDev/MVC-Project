@@ -122,12 +122,14 @@ namespace MVC_Producr.Controllers
         }
 
 
-        [HttpGet]
-        public async Task<IActionResult> Get_History()
+        [HttpGet,ActionName("Get_History")]
+        public async Task<IActionResult> Get_History(GetHistoryViewModel getHistory)
         {
+            var changes = await _context.ProductHistorys.Where(x=>x.WhenWasChanged <= getHistory.DateFor && 
+                                                                  x.WhenWasChanged >= getHistory.DateFrom).ToListAsync();
 
 
-            return View();
+            return View(changes);
         }
     }
 }
