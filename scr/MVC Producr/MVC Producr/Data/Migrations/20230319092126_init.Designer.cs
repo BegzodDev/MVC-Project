@@ -12,8 +12,8 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace MVC_Producr.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20230313095316_initial")]
-    partial class initial
+    [Migration("20230319092126_init")]
+    partial class init
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -42,6 +42,14 @@ namespace MVC_Producr.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Admins");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Password = "12345",
+                            UserName = "Admin"
+                        });
                 });
 
             modelBuilder.Entity("MVC_Producr.Models.Domain.Entities.Product", b =>
@@ -58,12 +66,72 @@ namespace MVC_Producr.Migrations
                     b.Property<double?>("Price")
                         .HasColumnType("double precision");
 
-                    b.Property<string>("Quantity")
-                        .HasColumnType("text");
+                    b.Property<int>("Quantity")
+                        .HasColumnType("integer");
 
                     b.HasKey("Id");
 
                     b.ToTable("Products");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            ItemName = "olma",
+                            Price = 20000.0,
+                            Quantity = 3
+                        },
+                        new
+                        {
+                            Id = 2,
+                            ItemName = "banan",
+                            Price = 10000.0,
+                            Quantity = 5
+                        });
+                });
+
+            modelBuilder.Entity("MVC_Producr.Models.Domain.Entities.ProductHistory", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Discription")
+                        .HasColumnType("text");
+
+                    b.Property<DateTime>("WhenWasChanged")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("ProductHistorys");
+                });
+
+            modelBuilder.Entity("MVC_Producr.Models.Domain.Entities.TotalPriceWithVAT", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<double>("Price")
+                        .HasColumnType("double precision");
+
+                    b.Property<string>("ProductName")
+                        .HasColumnType("text");
+
+                    b.Property<int>("Quantity")
+                        .HasColumnType("integer");
+
+                    b.Property<int>("TotalPriceWithVat")
+                        .HasColumnType("integer");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("TotalPriceWithVATs");
                 });
 
             modelBuilder.Entity("MVC_Producr.Models.Domain.Entities.User", b =>
@@ -83,6 +151,14 @@ namespace MVC_Producr.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Users");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Password = "12345",
+                            UserName = "Bob"
+                        });
                 });
 #pragma warning restore 612, 618
         }

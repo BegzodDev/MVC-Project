@@ -1,0 +1,28 @@
+﻿@model List<MVC_Producr.Models.Domain.Entities.ProductHistory>
+
+@{
+}
+<h1>Products</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Description</th>
+            <th>When Was Changed</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Id</td>
+                <td>@item.Discription</td>
+                <td>@item.WhenWasChanged</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<button style="margin-left:900px" type="submit" onclick="location.href='@Url.Action("Index","Admin")'" class="btn btn-danger btn-group-lg btn-block">Back to Admin Actions</button>
+

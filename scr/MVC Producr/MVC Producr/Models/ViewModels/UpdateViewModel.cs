@@ -1,11 +1,10 @@
-﻿namespace MVC_Producr.Models.Domain.Entities
+﻿namespace MVC_Producr.Models.ViewModels
 {
-    public class Product
+    public class UpdateViewModel
     {
         public int Id { get; set; }
         public string? ItemName { get; set; }
         public int Quantity { get; set; }
-        public double? Price { get; set; }
-
+        public double Price { get; set; }
     }
 }
