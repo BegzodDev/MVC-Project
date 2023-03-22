@@ -12,7 +12,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace MVC_Producr.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20230319092126_init")]
+    [Migration("20230322051938_init")]
     partial class init
     {
         /// <inheritdoc />
@@ -102,7 +102,7 @@ namespace MVC_Producr.Migrations
                         .HasColumnType("text");
 
                     b.Property<DateTime>("WhenWasChanged")
-                        .HasColumnType("timestamp with time zone");
+                        .HasColumnType("timestamp without time zone");
 
                     b.HasKey("Id");
 

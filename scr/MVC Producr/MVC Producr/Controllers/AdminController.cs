@@ -37,7 +37,12 @@ namespace MVC_Producr.Controllers
             return View();
         }
 
-        [HttpPost]
+        public IActionResult Get_History()
+        {
+            return View();
+        }
+
+        [HttpPost,ActionName("Post")]
         public async Task<IActionResult> Add_Product(ProductViewModel product)
         {
 
@@ -122,14 +127,18 @@ namespace MVC_Producr.Controllers
         }
 
 
-        [HttpGet,ActionName("Get_History")]
+        [HttpPost,ActionName("History")]
         public async Task<IActionResult> Get_History(GetHistoryViewModel getHistory)
         {
-            var changes = await _context.ProductHistorys.Where(x=>x.WhenWasChanged <= getHistory.DateFor && 
+            var changes = await _context.ProductHistorys.Where(x => x.WhenWasChanged <= getHistory.DateFor &&
                                                                   x.WhenWasChanged >= getHistory.DateFrom).ToListAsync();
+            return RedirectToAction("Get_Table", "Admin",changes);
+        }
 
-
-            return View(changes);
+        [HttpGet]
+        public async Task<IActionResult> Get_Table(List<ProductHistory> history)
+        {
+            return View(history);
         }
     }
 }
