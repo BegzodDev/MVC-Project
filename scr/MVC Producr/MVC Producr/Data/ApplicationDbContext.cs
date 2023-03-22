@@ -8,6 +8,7 @@ namespace MVC_Producr.Data
     {
         public ApplicationDbContext(DbContextOptions options) : base(options)
         {
+            AppContext.SetSwitch("Npgsql.EnableLegacyTimestampBehavior", true);
         }
 
         public DbSet<Admin> Admins { get; set; }

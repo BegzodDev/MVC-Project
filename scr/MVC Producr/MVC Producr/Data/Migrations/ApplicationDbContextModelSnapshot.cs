@@ -99,7 +99,7 @@ namespace MVC_Producr.Migrations
                         .HasColumnType("text");
 
                     b.Property<DateTime>("WhenWasChanged")
-                        .HasColumnType("timestamp with time zone");
+                        .HasColumnType("timestamp without time zone");
 
                     b.HasKey("Id");
 

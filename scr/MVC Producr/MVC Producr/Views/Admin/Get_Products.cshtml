@@ -1,0 +1,53 @@
+﻿@model IEnumerable<MVC_Producr.Models.Domain.Entities.Product>
+
+@{
+    ViewData["Title"] = "Get_Products";
+}
+
+<h1>Get_Products</h1>
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ItemName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Quantity)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Price)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ItemName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Quantity)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Price)
+            </td>
+        </tr>
+}
+
+    </tbody>
+</table>
+<h1>
+        <button type="submit" onclick="location.href='@Url.Action("Update","Admin")'" class="btn btn-info btn-group-lg btn-block">Update</button>
+        <button type="submit" onclick="location.href='@Url.Action("Delete","Admin")'" class="btn btn-success btn-group-lg btn-block">Delete</button>
+        <button style="margin-left:900px" type="submit" onclick="location.href='@Url.Action("Index","Admin")'"
+                class="btn btn-danger btn-group-lg btn-block">Back to Admin Actions</button>
+</h1>

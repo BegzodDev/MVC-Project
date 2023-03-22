@@ -34,7 +34,7 @@ namespace MVC_Producr.Migrations
                 {
                     Id = table.Column<int>(type: "integer", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    WhenWasChanged = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
+                    WhenWasChanged = table.Column<DateTime>(type: "timestamp without time zone", nullable: false),
                     Discription = table.Column<string>(type: "text", nullable: true)
                 },
                 constraints: table =>

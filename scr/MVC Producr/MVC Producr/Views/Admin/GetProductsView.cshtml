@@ -1,0 +1,36 @@
+﻿@model List<MVC_Producr.Models.Domain.Entities.Product>
+
+@{
+    ViewData["Title"] = "Get_Products";
+}
+<h1>Products</h1>
+
+<form method="post" action="Get_History">
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>ProductName</th>
+                <th>Quantity</th>
+                <th>Price</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.Id</td>
+                    <td>@item.ItemName</td>
+                    <td>@item.Quantity</td>
+                    <td>@item.Price</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    <button type="submit" onclick="location.href='@Url.Action("Update","Admin")'" class="btn btn-info btn-group-lg btn-block">Update</button>
+    <button type="submit" onclick="location.href='@Url.Action("Delete","Admin")'" class="btn btn-success btn-group-lg btn-block">Delete</button>
+    <button style="margin-left:900px" type="submit" onclick="location.href='@Url.Action("Index","Admin")'" class="btn btn-danger btn-group-lg btn-block">Back to Admin Actions</button>
+</form>
+
